@@ -1,0 +1,82 @@
+﻿@model Sample_ToDo_WebApp.Models.ToDoModel
+
+<div class="container">
+    <div class="row mt-2">
+        <div class="col text-right">
+            <button type="button" class="btn btn-success" onclick="toogleAddTodo()">Add Todo</button>
+        </div>
+    </div>
+
+    <div class="row mt-2" id="add_todo_section" style="display:none;">
+        <div class="col">
+            <form asp-action="Create" asp-controller="ToDo" method="post">
+
+                <label asp-for="TD_DTO.Title">Title</label>
+                <input asp-for="TD_DTO.Title" type="text" class="form-control" />
+
+                <label asp-for="TD_DTO.Description">Title</label>
+                <input asp-for="TD_DTO.Description" type="text" class="form-control" />
+
+                <input type="hidden" asp-for="TD_DTO.FK_User" value="@Model.ToDoList[0].FK_User" />
+
+                <button type="submit" class="btn btn-outline-success">Add</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="row mt-2 d-flex">
+    @for(int i = 0; i < Model.ToDoList.Count; i++)
+    {
+        <div class="card">
+            <div class="row">
+                <div class="col">
+                    <h4>@Model.ToDoList[i].Title</h4>
+                </div>
+                <div class="col">
+                    <h4>@Html.DisplayFor(m => m.ToDoList[i].CreatedDate)</h4>
+                </div>
+                <div class="col-2 mr-2">
+                    <a href="@Url.Action("Delete", "Todo", new { id = Model.ToDoList[i].Id, fkUser = Model.ToDoList[i].FK_User})" class="btn btn-sm btn-danger">X</a>
+                </div>
+            </div>
+            <p class="desc-par">@Model.ToDoList[i].Description</p>
+            <b>@Model.ToDoList[i].UserName</b>
+        </div>
+    }
+</div>
+
+
+
+<style type="text/css">
+
+    .card{
+        margin: 10px;
+        padding: 10px;
+        background-color: aliceblue;
+        border-radius:10px;
+        width: 350px;
+    }
+
+    .desc-par{
+        font-size:1.1rem;
+        font-style: italic;
+    }
+
+</style>
+
+<script type="text/javascript">
+
+    function toogleAddTodo() {
+        let section = document.getElementById("add_todo_section");
+
+        if (section.style.display == 'none') {
+            section.style.display = 'flex';
+        }
+        else {
+            section.style.display = 'none';
+        }
+    }
+
+</script>
