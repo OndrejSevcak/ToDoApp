@@ -19,13 +19,10 @@ namespace Sample_ToDo_WebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            List<ToDo> toDoList = new List<ToDo>();
+            ToDoModel model = new ToDoModel();
 
             string json = await _apiService.SendAsync("https://localhost:44395/api/todo", HttpMethod.Get);
-            toDoList = JsonSerializer.Deserialize<List<ToDo>>(json);
-
-            ToDoModel model = new ToDoModel();
-            model.ToDoList = toDoList;
+            model.ToDoList = JsonSerializer.Deserialize<List<ToDo>>(json);
 
             return View(model);
         }
@@ -58,5 +55,13 @@ namespace Sample_ToDo_WebApp.Controllers
 
             return RedirectToAction("Index");
         }
+
+        //PARTIAL VIEWS---------------------------------------------------------------------------------
+        public ActionResult OnGetPartial() =>
+            new PartialViewResult
+            {
+                ViewName = "_DetailPartial",
+                ViewData = ViewData
+            };
     }
 }

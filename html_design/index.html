@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" >
+    <script src="code.js"></script>
+    <script src="https://kit.fontawesome.com/f073a1ffbd.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <h3>ToDoApp</h3>
+                </div>
+                <div class="horizontal-nav">
+                    <button type="button" class="btn btn-create" onclick="displaySection('create')"><i class="fa-solid fa-plus"></i></button>
+                    <span class="username"> Ondřej <i class="fa-solid fa-circle-user"></i></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <nav class="sidebar">
+        <div class="side-menu-top">
+            <ul>
+                <li onclick="displaySection('todos')"><i class="fa-solid fa-list-ul"></i> &emsp; All</li>
+                <li><i class="fa-regular fa-calendar-check"></i> &emsp; Today</li>
+                <li><i class="fa-regular fa-bell"></i> &emsp; Upcoming</li>
+            </ul>
+        </div>
+    </nav>
+    <section id="todos" class="main-todo-section">
+        <div class="flex-todo-container">
+            <div class="todo" onclick="displaySection('detail')">
+                <div class="todo-header">
+                    <h4 style="margin: 0;">Todo Nazev</h4> 
+                </div>
+                <div class="todo-body">
+                    <p>Description asdf asdf asd fasd fas dfa sdfa sdf asdf asd fa sdfas df asdf asd fasd f</p>
+                </div>
+                <div class="todo-footer">
+                    <button type="button" class="btn btn-card"><i class="fa-solid fa-check-double"></i></button>
+                    <button type="button" class="btn btn-card"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button type="button" class="btn btn-card"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            </div>
+            <div class="todo">
+                <div class="todo-header">
+                    <h4 style="margin: 0;">Todo Nazev</h4> 
+                </div>
+                <div class="todo-body">
+                    <p>Description asdf asdf asd fasd fas dfa sdfa sdf asdf asd fa sdfas df asdf asd fasd f</p>
+                </div>
+                <div class="todo-footer">
+                    <button type="button" class="btn btn-card"><i class="fa-solid fa-check-double"></i></button>
+                    <button type="button" class="btn btn-card"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button type="button" class="btn btn-card"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            </div>
+            <div class="todo">
+                <div class="todo-header">
+                    <h4 style="margin: 0;">Todo Nazev</h4> 
+                </div>
+                <div class="todo-body">
+                    <p>Description asdf asdf asd fasd fas dfa sdfa sdf asdf asd fa sdfas df asdf asd fasd f</p>
+                </div>
+                <div class="todo-footer">
+                    <button type="button" class="btn btn-card"><i class="fa-solid fa-check-double"></i></button>
+                    <button type="button" class="btn btn-card"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button type="button" class="btn btn-card"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    <section id="detail" class="main-todo-section" style="display:none;">
+        <h3>ToDo Title</h3>
+        <p>Description goes here goes heregoes heregoes heregoes heregoes heregoes heregoes heregoes heregoes here</p>
+
+    </section>
+</body>
+</html>

@@ -1,53 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-
-body {
-    padding: 0;
-    margin: 0;
+body{
+    padding:0;
+    margin:0;
     font-family: 'Poppins', sans-serif;
+
 }
 
-.container {
+.container{
     width: 80%;
     height: 100%;
     margin: auto;
 }
 
-header {
+header{
     height: 50px;
     width: 100%;
     background-color: #E25757;
 }
 
-nav {
+nav{
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo h3 {
-    margin: 0;
+.logo h3{
+    margin:0;   
     color: white;
 }
 
-.username {
+.username{
     color: white;
     font-weight: 400;
     margin-left: 10px;
@@ -55,53 +39,53 @@ nav {
 }
 
 /*--SIDEBAR------------------------------------------------------*/
-.sidebar {
+.sidebar{
     position: absolute;
-    left: 0;
-    top: 50px; /*header height*/
+    left:0;
+    top:50px; /*header height*/
     width: 25%;
     height: calc(100% - 50px);
     background-color: #F2F2F2;
 }
 
-.side-menu-top {
-    position: absolute;
+.side-menu-top{
+    position:absolute;
     top: 40px;
     margin-left: 10%;
 }
 
-    .side-menu-top ul {
-        list-style: none;
-        font-weight: 500;
-    }
+.side-menu-top ul{
+    list-style: none;
+    font-weight: 500;
+}
 
-        .side-menu-top ul li:hover {
-            font-weight: 700;
-            cursor: pointer;
-        }
+.side-menu-top ul li:hover{
+    font-weight: 700;
+    cursor: pointer;
+}
 
-        .side-menu-top ul li {
-            margin-top: 5px;
-        }
+.side-menu-top ul li{
+    margin-top: 5px;
+}
 
 /*--MAIN TODO PANEL------------------------------------------------------*/
-.main-todo-section {
+.main-todo-section{
     margin-left: 25%;
     height: calc(100% - 50px);
     width: 75%;
     position: absolute;
-    box-sizing: border-box; /*padding wont be added to the divs width and height*/
+    box-sizing: border-box;  /*padding wont be added to the divs width and height*/
     padding: 25px 50px;
-    overflow-y: scroll;
+    overflow-y: scroll; 
 }
 
-.flex-todo-container {
+.flex-todo-container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.todo {
+.todo{
     width: 250px;
     height: 300px;
     margin-top: 15px;
@@ -111,26 +95,24 @@ nav {
     position: relative;
 }
 
-    .todo:hover {
-        cursor: pointer;
-    }
+.todo:hover{
+    cursor:pointer;
+}
 
-    .todo p {
-        margin: 0;
-        margin-top: 20px;
-    }
+.todo p{
+    margin: 0;
+    margin-top: 20px;    
+}
 
-.todo-header {
+.todo-header{
     text-align: center;
 }
 
-.todo-body {
+.todo-body{
     margin-top: 10px;
-    max-height: 65%;
-    overflow: hidden;
 }
 
-.todo-footer {
+.todo-footer{
     position: absolute;
     bottom: 20px;
     width: calc(100% - 40px);
@@ -138,20 +120,20 @@ nav {
 }
 
 /*--BTNs------------------------------------------------------*/
-.btn-create {
-    border: none;
+.btn-create{
+    border:none;
     background-color: transparent;
     font-size: 1rem;
     padding: 5px 10px;
 }
 
-.btn:hover {
+.btn:hover{
     cursor: pointer;
     background-color: white;
     border-radius: 10px;
 }
 
-.btn-card {
+.btn-card{
     width: 40px;
     height: 40px;
     border-radius: 10px;
@@ -159,14 +141,14 @@ nav {
 
 /*--Backgrounds------------------------------------------------------*/
 
-.bg-green {
+.bg-green{
     background-color: #5cb85c;
 }
 
-.bg-orange {
+.bg-orange{
     background-color: #f0ad4e;
 }
 
-.bg-red {
+.bg-red{
     background-color: #d9534f;
 }
