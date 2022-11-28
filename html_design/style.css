@@ -48,6 +48,20 @@ nav{
     background-color: #F2F2F2;
 }
 
+@media (max-width: 500px){
+    .sidebar {
+        width: 15%;
+    }
+    .main-todo-section{
+        margin-left: 15% !important;
+        width: 85%;
+        padding: 5px !important;
+    }
+    .side-menu-top ul{
+        display: none;
+    }
+}
+
 .side-menu-top{
     position:absolute;
     top: 40px;
@@ -75,7 +89,7 @@ nav{
     width: 75%;
     position: absolute;
     box-sizing: border-box;  /*padding wont be added to the divs width and height*/
-    padding: 25px 50px;
+    /* padding: 25px 50px; */
     overflow-y: scroll; 
 }
 
@@ -93,10 +107,21 @@ nav{
     padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     position: relative;
+    overflow: hidden;
+}
+
+.todo:hover .todo-footer{
+    bottom: 20px;
+    opacity: 1;
 }
 
 .todo:hover{
     cursor:pointer;
+    background-color: antiquewhite;
+}
+
+.animate{
+    transition: all 0.3s ease-in-out;
 }
 
 .todo p{
@@ -108,15 +133,21 @@ nav{
     text-align: center;
 }
 
+.todo-header b{
+    color: dimgray;
+    font-size: 0.8rem;
+}
+
 .todo-body{
     margin-top: 10px;
 }
 
 .todo-footer{
     position: absolute;
-    bottom: 20px;
+    bottom: -30%; /*20px*/
     width: calc(100% - 40px);
     text-align: center;
+    opacity: 0;
 }
 
 /*--BTNs------------------------------------------------------*/
@@ -151,4 +182,17 @@ nav{
 
 .bg-red{
     background-color: #d9534f;
+}
+
+
+/*--Media queries------------------------------------------------------------------------------------------*/
+
+
+@media (orientation: landscape){
+    /*zobrazení na šířku*/
+}
+
+@media (orientation: portrait){
+    /*zobrazení na výšku*/
+
 }
