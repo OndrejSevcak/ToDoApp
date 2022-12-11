@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using Sample_ToDo_API.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,16 @@ namespace Sample_ToDo_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Implement Swagger UI",
+                    Description = "A simple example to Implement Swagger UI",
+                });
+            });
+
 
             services.AddScoped<IDapperService, DapperService>();
         }
@@ -38,10 +49,18 @@ namespace Sample_ToDo_API
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "TodoApp V1");
+                //c.RoutePrefix = String.Empty;
+            });
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            
 
             app.UseAuthorization();
 

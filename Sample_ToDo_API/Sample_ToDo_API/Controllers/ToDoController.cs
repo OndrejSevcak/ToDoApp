@@ -21,7 +21,7 @@ namespace Sample_ToDo_API.Controllers
             _dapper = dapper;
         }
 
-        [HttpGet]   //path: api/todo
+        [HttpGet("")]   //path: api/todo
         public async Task<ActionResult<IEnumerable<ToDo>>> Get()
         {
             try
@@ -35,7 +35,7 @@ namespace Sample_ToDo_API.Controllers
             }
         }
 
-        [HttpPost]    //path: /api/todo?description=demo&title=Postman&fkUser=1
+        [HttpPost("")]    //path: /api/todo?description=demo&title=Postman&fkUser=1
         //public async Task<ActionResult<int>> Create(string title, string description, int fkUser, int fkCategory, DateTime targetDate)
         public async Task<ActionResult<int>> Create(NewTodoDTO todo)
         {
@@ -57,7 +57,7 @@ namespace Sample_ToDo_API.Controllers
             }
         }
 
-        [HttpPut]   //path: /api/todo?id=7&description=updatedemo&title=Postman&fkUser=1
+        [HttpPut("")]   //path: /api/todo?id=7&description=updatedemo&title=Postman&fkUser=1
         public async Task<ActionResult<int>> Update(int id, string title, string description, int fkUser, int fkCategory, DateTime targetDate)
         {
             try
@@ -80,7 +80,7 @@ namespace Sample_ToDo_API.Controllers
             }
         }
 
-        [HttpDelete]    //path: /api/todo?id=8&fkUser=1
+        [HttpDelete("")]    //path: /api/todo?id=8&fkUser=1
         public async Task<ActionResult<string>> Delete(int id, int fkUser)
         {
             try
@@ -102,6 +102,30 @@ namespace Sample_ToDo_API.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPost("SetDone")]
+        public async Task<ActionResult<string>> SetDone(int id)
+        {
+            try
+            {
+                var par = new DynamicParameters();
+                par.Add("@Id", id);
+
+                var result = await _dapper.LoadData<string>("dbo.proc_Temp_TodoSetDone", par);
+                if (result.First().ToLower() == "ok")
+                {
+                    return Ok("ok");
+                }
+                else
+                {
+                    return BadRequest(result.First());
+                }
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }

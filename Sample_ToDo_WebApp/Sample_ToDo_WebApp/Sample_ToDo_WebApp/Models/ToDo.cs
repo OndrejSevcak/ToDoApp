@@ -20,6 +20,9 @@ namespace Sample_ToDo_WebApp.Models
         [JsonPropertyName("fK_User")]
         public int FK_User { get; set; }
 
+        [JsonPropertyName("done")]
+        public bool Done { get; set; }
+
         [Display(Name = "Created Date")]
         [DataType(DataType.Date)]
         [JsonPropertyName("createdDate")]
@@ -36,6 +39,8 @@ namespace Sample_ToDo_WebApp.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public int FK_User { get; set; }
+        public int FK_Category { get; set; }
+        public DateTime RequiredDate { get; set; }
 
     }
 }

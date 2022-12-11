@@ -1,21 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-
-html {
-  font-size: 14px;
+html{
+    font-size: 1rem;
 }
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 
 body {
     padding: 0;
@@ -64,10 +51,28 @@ nav {
     background-color: #F2F2F2;
 }
 
+@media (max-width: 500px) {
+    .sidebar {
+        width: 15%;
+    }
+
+    .main-todo-section {
+        margin-left: 15% !important;
+        width: 85%;
+        padding: 5px !important;
+    }
+
+    .side-menu-top ul {
+        display: none;
+    }
+}
+
+/*--Side Menu Top--------------------------------------------------------------------------------------------------*/
 .side-menu-top {
     position: absolute;
     top: 40px;
     margin-left: 10%;
+    width: 90%;
 }
 
     .side-menu-top ul {
@@ -84,50 +89,66 @@ nav {
             margin-top: 5px;
         }
 
-/*--MAIN TODO PANEL------------------------------------------------------*/
-.main-todo-section {
+/*--MAIN Section--------------------------------------------------------------------------------------------------*/
+.main-section {
     margin-left: 25%;
     height: calc(100% - 50px);
     width: 75%;
     position: absolute;
     box-sizing: border-box; /*padding wont be added to the divs width and height*/
-    padding: 25px 50px;
+    /* padding: 25px 50px; */
     overflow-y: scroll;
 }
+
+/*--To Do Section-------------------------------------------------------------------------------------------------*/
 
 .flex-todo-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-top:20px;
 }
 
 .todo {
     width: 250px;
-    height: 300px;
+    height: 250px;
     margin-top: 15px;
     margin-left: 30px;
     padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     position: relative;
+    overflow: hidden;
 }
 
-    .todo:hover {
-        cursor: pointer;
+    .todo:hover .todo-footer-navigation {
+        bottom: 100px;
+        opacity: 1;
     }
 
-    .todo p {
-        margin: 0;
-        margin-top: 20px;
+    .todo:hover {
+        background-color: #F2F2F2;
     }
+
+.animate {
+    transition: all 0.3s ease-in-out;
+}
+
+.todo p {
+    margin: 0;
+    margin-top: 20px;
+}
 
 .todo-header {
     text-align: center;
 }
 
+    .todo-header b {
+        color: dimgray;
+        font-size: 0.8rem;
+    }
+
 .todo-body {
     margin-top: 10px;
-    max-height: 65%;
-    overflow: hidden;
 }
 
 .todo-footer {
@@ -135,6 +156,21 @@ nav {
     bottom: 20px;
     width: calc(100% - 40px);
     text-align: center;
+}
+
+.todo-footer-navigation {
+    position: absolute;
+    bottom: -30%; /*20px*/
+    width: calc(100% - 40px);
+    text-align: center;
+    opacity: 0;
+}
+
+/*--Section-------------------------------------------------------------------------------------------------*/
+.section-container {
+    padding: 20px 50px;
+    height: calc(100% - 50px);
+    margin-top:20px;
 }
 
 /*--BTNs------------------------------------------------------*/
@@ -145,16 +181,18 @@ nav {
     padding: 5px 10px;
 }
 
-.btn:hover {
+/*.btn:hover {
     cursor: pointer;
     background-color: white;
     border-radius: 10px;
-}
+}*/
 
 .btn-card {
     width: 40px;
     height: 40px;
     border-radius: 10px;
+    color:black;
+    /*background-color: white;*/
 }
 
 /*--Backgrounds------------------------------------------------------*/
@@ -169,4 +207,25 @@ nav {
 
 .bg-red {
     background-color: #d9534f;
+}
+
+.badge{
+    background-color: dodgerblue;
+    color: white;
+    font-weight:bold;
+    padding: 5px 10px;
+    z-index:9999;
+}
+
+
+/*--Media queries------------------------------------------------------------------------------------------*/
+
+
+@media (orientation: landscape) {
+    /*zobrazení na šíøku*/
+}
+
+@media (orientation: portrait) {
+    /*zobrazení na výšku*/
+
 }

@@ -20,11 +20,18 @@ namespace Sample_ToDo_WebApp.Controllers
         public async Task<IActionResult> Index()
         {
             ToDoModel model = new ToDoModel();
+            try
+            {
+                string json = await _apiService.SendAsync("https://localhost:44395/api/todo", HttpMethod.Get);
+                model.ToDoList = JsonSerializer.Deserialize<List<ToDo>>(json);
+                model.ToDoListNotCompleted = model.ToDoList.Where(t => t.Done == false).ToList();
+            }
+            catch (Exception ex)
+            {
 
-            string json = await _apiService.SendAsync("https://localhost:44395/api/todo", HttpMethod.Get);
-            model.ToDoList = JsonSerializer.Deserialize<List<ToDo>>(json);
-
+            }
             return View(model);
+
         }
 
         //[HttpGet("Delete/{id}/fkUser")]
@@ -55,6 +62,12 @@ namespace Sample_ToDo_WebApp.Controllers
 
             return RedirectToAction("Index");
         }
+
+        //[HttpPost]
+        //public async Task<ActionResult<string>> SetDone(int id)
+        //{
+        //    string apiUrl = "https://localhost:44395/api/todo?setdone=";
+        //}
 
         //PARTIAL VIEWS---------------------------------------------------------------------------------
         public ActionResult OnGetPartial() =>

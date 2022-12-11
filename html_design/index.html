@@ -15,7 +15,7 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <h3>ToDoApp</h3>
+                    <h3>Tracker{App} Dashboard</h3>
                 </div>
                 <div class="horizontal-nav">
                     <button type="button" class="btn btn-create" onclick="displaySection('create')"><i class="fa-solid fa-plus"></i></button>
@@ -24,24 +24,59 @@
             </nav>
         </div>
     </header>
+    <!--SIDEBAR-------------------->
     <nav class="sidebar">
         <div class="side-menu-top">
+            <h3>Backlog</h3>
             <ul>
                 <li onclick="displaySection('todos')"><i class="fa-solid fa-list-ul"></i> &emsp; All</li>
                 <li><i class="fa-regular fa-calendar-check"></i> &emsp; Today</li>
                 <li><i class="fa-regular fa-bell"></i> &emsp; Upcoming</li>
             </ul>
+            <h3 style="margin-top: 60px;">Projects</h3>
+            <ul>
+                <li><i class="fa-solid fa-bars-progress"></i> &emsp; TrackerApp</li>
+                <li><i class="fa-solid fa-bars-progress"></i> &emsp; OSVC_Calc</li>
+                <li><i class="fa-solid fa-bars-progress"></i> &emsp; PU</li>
+            </ul>
+            <h3 style="margin-top: 60px;">Technology</h3>
+            <ul>
+                <li><i class="fa-solid fa-code"></i> &emsp; C#</li>
+                <li><i class="fa-solid fa-code"></i> &emsp; .NET</li>
+                <li><i class="fa-solid fa-code"></i> &emsp; SQL</li>
+                <li><i class="fa-solid fa-code"></i> &emsp; Azure</li>
+                <li><i class="fa-solid fa-code"></i> &emsp; Angular</li>
+                <li><i class="fa-solid fa-code"></i> &emsp; CSS</li>
+                <li><i class="fa-solid fa-code"></i> &emsp; Typescript</li>
+            </ul>
         </div>
     </nav>
-    <section id="todos" class="main-todo-section">
+    <!--TODOs Section-------------------->
+    <section id="todos" class="main-section">
         <div class="flex-todo-container">
             <div class="todo" onclick="displaySection('detail')">
                 <div class="todo-header">
-                    <h4 style="margin: 0;">Todo Nazev</h4>
+                    <h4 style="margin: 0;">ADFS Authentication using OIDC</h4>
                     <b>30.11.2022</b>
                 </div>
                 <div class="todo-body">
-                    <p>Description asdf asdf asd fasd fas dfa sdfa sdf asdf asd fa sdfas df asdf asd fasd f</p>
+                    <p>Implement user authentication using ADSF and Open ID Connect protocol.</p>
+                    <p>Links to <a href="#">OSVC_Calc</a> project.</p>
+                </div>
+                <div class="todo-footer animate">
+                    <button type="button" class="btn btn-card bg-green"><i class="fa-solid fa-check-double"></i></button>
+                    <button type="button" class="btn btn-card bg-orange"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button type="button" class="btn btn-card bg-red"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            </div>
+            <div class="todo" onclick="displaySection('detail')">
+                <div class="todo-header">
+                    <h4 style="margin: 0;">UI - Sidebar</h4>
+                    <b>20.12.2022</b>
+                </div>
+                <div class="todo-body">
+                    <p>Develop user interface</p>
+                    <p>Links to <a href="#">TrackerApp</a> project.</p>
                 </div>
                 <div class="todo-footer animate">
                     <button type="button" class="btn btn-card bg-green"><i class="fa-solid fa-check-double"></i></button>
@@ -51,7 +86,7 @@
             </div>
             <div class="todo">
                 <div class="todo-header">
-                    <h4 style="margin: 0;">Todo Nazev</h4> 
+                    <h4 style="margin: 0;">.NET API Versioning</h4> 
                 </div>
                 <div class="todo-body">
                     <p>Description asdf asdf asd fasd fas dfa sdfa sdf asdf asd fa sdfas df asdf asd fasd f</p>
@@ -76,12 +111,30 @@
                 </div>
             </div>
         </div>
-        
     </section>
-    <section id="detail" class="main-todo-section" style="display:none;">
-        <h3>ToDo Title</h3>
-        <p>Description goes here goes heregoes heregoes heregoes heregoes heregoes heregoes heregoes heregoes here</p>
-
+    <!--TODO Detail Section-------------------->
+    <section id="detail" class="" style="display:none;">
+        <div class="detail-container">
+            <h3>ADFS Authentication using OIDC</h3>
+            <b>Description:</b>
+            <p>Description goes here goes heregoes heregoes heregoes heregoes heregoes heregoes heregoes heregoes here</p>
+            <b>Key objectives:</b>
+            <p>OIDC stands for Open ID Connect protocol that builds up on top of OAuth2.0 and is used for user authorization.</p>
+        </div>
+    </section>
+    <!--Create Section-------------------->
+    <section id="create" class="create-section" style="display: none;">
+        <h3>Create</h3>
+        <label>Select what to create:</label>
+        <select class="create-select">
+            <option id="1">Todo</option>
+            <option id="2">Project</option>
+            <option id="2">Blog post</option>
+        </select>
+        
+        <h3 style="margin-top: 30px;">New ToDo</h3>
+        <label>Title</label>
+        <input type="text">
     </section>
 </body>
 </html>

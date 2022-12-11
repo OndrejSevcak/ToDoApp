@@ -7,6 +7,13 @@ body{
 
 }
 
+select{ 
+ width: 200px;
+ padding: 5px;
+ border: none;
+ background-color: #F2F2F2;   
+}
+
 .container{
     width: 80%;
     height: 100%;
@@ -62,10 +69,12 @@ nav{
     }
 }
 
+/*--Side Menu Top--------------------------------------------------------------------------------------------------*/
 .side-menu-top{
     position:absolute;
     top: 40px;
     margin-left: 10%;
+    width: 90%;
 }
 
 .side-menu-top ul{
@@ -82,8 +91,8 @@ nav{
     margin-top: 5px;
 }
 
-/*--MAIN TODO PANEL------------------------------------------------------*/
-.main-todo-section{
+/*--MAIN Section--------------------------------------------------------------------------------------------------*/
+.main-section{
     margin-left: 25%;
     height: calc(100% - 50px);
     width: 75%;
@@ -92,6 +101,8 @@ nav{
     /* padding: 25px 50px; */
     overflow-y: scroll; 
 }
+
+/*--To Do Section-------------------------------------------------------------------------------------------------*/
 
 .flex-todo-container{
     display: flex;
@@ -117,7 +128,7 @@ nav{
 
 .todo:hover{
     cursor:pointer;
-    background-color: antiquewhite;
+    background-color: #F2F2F2;
 }
 
 .animate{
@@ -148,6 +159,20 @@ nav{
     width: calc(100% - 40px);
     text-align: center;
     opacity: 0;
+}
+
+/*--Edit Section-------------------------------------------------------------------------------------------------*/
+.detail-container{
+    padding: 20px 50px;
+    margin-left: 25%;
+    height: calc(100% - 50px);
+}
+
+/*--Create Section-------------------------------------------------------------------------------------------------*/
+.create-section{
+    padding: 20px 50px;
+    margin-left: 25%;
+    height: calc(100% - 50px);
 }
 
 /*--BTNs------------------------------------------------------*/

@@ -136,5 +136,22 @@ end
 exec dbo.proc_Temp_TodoDelete 3, 1
 go
 
+--Set Done--------------------------------------------------------------
+create or alter procedure dbo.proc_Temp_TodoSetDone(
+	@Id int
+)
+as
+begin
+	begin try
+		update dbo.Temp_Todo
+		set Done = 1
+		where Id = @Id
+
+		select 'ok'  --returns number of affected rows
+	end try
+	begin catch
+		select ERROR_MESSAGE()
+	end catch
+end
 
 

@@ -4,30 +4,53 @@
     ViewData["Title"] = "Home Page";
 }
 
+<!--SIDEBAR---------------------------->
 <nav class="sidebar">
     <div class="side-menu-top">
+        <h4>ToDo's</h4>
         <ul>
             <li onclick="displaySection('todos')"><i class="fa-solid fa-list-ul"></i> &emsp; All</li>
             <li><i class="fa-regular fa-calendar-check"></i> &emsp; Today</li>
             <li><i class="fa-regular fa-bell"></i> &emsp; Upcoming</li>
         </ul>
+        <h4 style="margin-top: 60px;">Projects</h4>
+        <ul>
+            <li><i class="fa-solid fa-bars-progress"></i> &emsp; TrackerApp</li>
+            <li><i class="fa-solid fa-bars-progress"></i> &emsp; OSVC_Calc</li>
+            <li><i class="fa-solid fa-bars-progress"></i> &emsp; PU</li>
+        </ul>
+        <h4 style="margin-top: 60px;">Blog</h4>
+        <ul>
+            <li><i class="fa-solid fa-code"></i> &emsp; C#</li>
+            <li><i class="fa-solid fa-code"></i> &emsp; .NET</li>
+            <li><i class="fa-solid fa-code"></i> &emsp; SQL</li>
+            <li><i class="fa-solid fa-code"></i> &emsp; Azure</li>
+            <li><i class="fa-solid fa-code"></i> &emsp; Angular</li>
+            <li><i class="fa-solid fa-code"></i> &emsp; CSS</li>
+            <li><i class="fa-solid fa-code"></i> &emsp; Typescript</li>
+        </ul>
     </div>
 </nav>
-<section id="todos" class="main-todo-section">
+<section id="todos" class="main-section">
     <div class="flex-todo-container">
-        @for (int i = 0; i < Model.ToDoList.Count; i++)
+        @for (int i = 0; i < Model.ToDoListNotCompleted.Count; i++)
         {
+            <!--TODO CARD---------------------------------------------------------------------------------------->
             <div class="todo" onclick="displaySection('detail_' +@Model.ToDoList[i].Id.ToString())">
                 <div class="todo-header">
-                    <h4 style="margin: 0;">@Model.ToDoList[i].Title</h4>
+                    <h3 style="margin: 0;">@Model.ToDoList[i].Title</h3>
+                    <b>30.11.2022</b>
                 </div>
                 <div class="todo-body">
                     <p>@Model.ToDoList[i].Description</p>
                 </div>
                 <div class="todo-footer">
-                    <button type="button" class="btn btn-card"><i class="fa-solid fa-check-double"></i></button>
-                    <button type="button" class="btn btn-card"><i class="fa-regular fa-pen-to-square"></i></button>
-                    <button type="button" class="btn btn-card"><i class="fa-solid fa-trash-can"></i></button>
+                    <span class="badge">ProjectName</span>
+                </div>
+                <div class="todo-footer-navigation animate">
+                    <button type="button" class="btn btn-card btn-success"><i class="fa-solid fa-check-double"></i></button>
+                    <button type="button" class="btn btn-card btn-warning"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button type="button" class="btn btn-card btn-danger"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
             </div>
         }
@@ -36,7 +59,60 @@
 
 @for (int i = 0; i < Model.ToDoList.Count; i++)
 {
-    <section id="detail_@Model.ToDoList[i].Id" class="main-todo-section" style="display:none;">
-        @await Html.PartialAsync("_DetailPartial", Model.ToDoList[i])
+    <section id="detail_@Model.ToDoList[i].Id" class="main-section" style="display:none;">
+        <div class="section-container">
+            @await Html.PartialAsync("_DetailPartial", Model.ToDoList[i])
+        </div>
     </section>
 }
+
+
+<section id="create" class="main-section" style="display:none;">
+    <div class="section-container">
+        <form asp-action="CreateToDo" asp-controller="ToDo" method="post">
+            <h3>Cretae ToDo</h3>
+            <div class="row mt-4">
+                <div class="col-3">
+                    <label>Select project:</label>
+                </div>
+                <div class="col">
+                    <select id="select_project" asp-for="TD_DTO.FK_Category" class="form-control">
+                        <option value="1">Trappcker</option>
+                        <option value="2">OSVC Calc</option>
+                        <option value="3">PIU PU</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-3">
+                    <label>Title:</label>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-3">
+                    <label>Short description:</label>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-3">
+                    <label>Detail:</label>
+                </div>
+                <div class="col">
+                    <textarea class="form-control" />
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-outline-success">Create</button>
+                </div>
+            </div>
+        </form>     
+    </div>
+    
+</section>

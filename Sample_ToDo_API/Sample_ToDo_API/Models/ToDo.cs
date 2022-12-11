@@ -9,6 +9,7 @@ namespace Sample_ToDo_API.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string UserName { get; set; }
+        public bool Done { get; set; }
         public int FK_User { get; set; }
         public int FK_Category { get; set; }
         public string CategoryName { get; set; }
